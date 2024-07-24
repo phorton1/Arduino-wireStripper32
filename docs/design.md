@@ -6,5 +6,7 @@
 **[Firmware](firmware.md)** --
 **[Build](build.md)** --
 
+![anim_build.gif](images/anim_build.gif)
+
 
 **Next:** A look at the [**Electronics**](electronics.md) for the machine ...

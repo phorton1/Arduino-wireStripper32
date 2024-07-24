@@ -6,5 +6,7 @@
 **[Firmware](firmware.md)** --
 **Build** --
 
+![combined.jpg](images/combined.jpg)
+
 
 **Done!!** Back to the [**beginning**](readme.md) ...

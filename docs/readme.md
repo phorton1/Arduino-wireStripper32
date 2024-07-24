@@ -10,6 +10,8 @@ I wanted to build a wire stripper to cut 22 guage solid core breadboard wire.
 After a review of existing projects on YouTube and the web, I decided to
 design my own.
 
+![side_by_side.jpg](images/side_by_side.jpg)
+
 - **Compact** - This design is very compact.  The wire cutter does not take
   up a lot of room on my desk or work surface.
 - **Web UI** - There is no built in touch screen.  This saves on component
@@ -21,6 +23,8 @@ design my own.
   button that can **stop** the machine and **unload or load** the wire.
 - **Common Tool** - the machine uses a commonly available inexpensive
   manual wire cutter.
+
+
 
 
 I have not yet designed a wire spool holder.  I am considering creating
@@ -39,6 +43,9 @@ a **maker** who is *building* this wire cutter/stripper:
 - **[Electronics](electronics.md)** - **Schematics**, **PCB layouts**, and **Cabling** details
 - **[Firmware](firmware.md)** - Compiling and installing the **Firmware**
 - **[Build](build.md)** - **Final Build** of the wireStripper
+
+
+
 
 
 ## Files Available in this repository
