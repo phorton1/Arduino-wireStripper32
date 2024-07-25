@@ -27,7 +27,7 @@ private:
 
 	AccelStepper m_stepper;
 
-	long m_target_pos;
+	volatile long m_target_pos;
 
 };
 

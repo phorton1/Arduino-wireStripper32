@@ -13,7 +13,7 @@ Extruder::Extruder(uint8_t step_pin, uint8_t dir_pin, uint8_t enable_pin) :
 	m_stepper(1,step_pin,dir_pin)		// AccelStepper::DRIVER
 {
 	m_stepper.setEnablePin(enable_pin);
-	m_stepper.setPinsInverted(true,false,true);
+	m_stepper.setPinsInverted(false,false,true);
 		// dir, step, enable
 }
 
@@ -69,14 +69,11 @@ void Extruder::move(float mm, int speed)
 	revs *= wire_stripper->_ext_calib;
 
 	float steps = revs * wire_stripper->_ext_rev_steps;
-	m_target_pos = steps;
-
-	LOGD("Extruder:move(%0.3f) steps=%ld speed=%d",mm,m_target_pos,speed);
+	uint32_t i_steps = steps;
+	LOGD("Extruder:move(%0.3f) steps=%ld speed=%d",mm,i_steps,speed);
 	m_stepper.setMaxSpeed(speed);
 	m_stepper.setCurrentPosition(0);
 	m_stepper.enableOutputs();
-
-	// reverse directions since wire is on bottom of spindle
-	
-	m_stepper.moveTo(-m_target_pos);
+	m_stepper.moveTo(i_steps);
+	m_target_pos = i_steps;
 }

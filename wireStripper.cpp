@@ -57,7 +57,8 @@
 
 #define DEFAULT_UNLOAD_LEN			70.0		// how far to unload
 #define DEFAULT_LOAD_LEN			400.0		// how far to go until failing trying to load
-#define DEFAULT_LOAD_DIST			11.0			// post wire-sense how far to cutter
+#define DEFAULT_LOAD_DIST			11.0		// post wire-sense how far to cutter
+#define DEFAULT_MOVE_DIST			10.0
 #define DEFAULT_END_LENGTH			8.0
 #define DEFAULT_HOLES				4.0
 #define DEFAULT_LENGTH    			(DEFAULT_HOLES * 2.54)
@@ -94,6 +95,8 @@ static valueIdType dash_items[] = {
     ID_HOLES,
     ID_END2,
     ID_CUT,
+	ID_MOVE,
+	ID_MOVE_DIST,
     ID_REBOOT,
     0
 };
@@ -159,6 +162,7 @@ const valDescriptor wireStripper::m_wire_stripper_values[] =
     {ID_UNLOAD,			VALUE_TYPE_COMMAND,	VALUE_STORE_SUB,		VALUE_STYLE_NONE,       NULL,	(void *) unload, 	NULL,		disabled_busy },
     {ID_GO,				VALUE_TYPE_COMMAND,	VALUE_STORE_SUB,		VALUE_STYLE_NONE,       NULL,	(void *) execute, 	NULL,		disabled_busy },
     {ID_CUT,			VALUE_TYPE_COMMAND,	VALUE_STORE_SUB,		VALUE_STYLE_NONE,       NULL,	(void *) docut, 	NULL,		disabled_busy },
+	{ID_MOVE,			VALUE_TYPE_COMMAND,	VALUE_STORE_SUB,		VALUE_STYLE_NONE,       NULL,	(void *) domove, 	NULL,		disabled_busy },
 
 	// readonly status fields
 
@@ -171,10 +175,11 @@ const valDescriptor wireStripper::m_wire_stripper_values[] =
 	{ID_LENGTH,	    	VALUE_TYPE_FLOAT,	VALUE_STORE_PREF,		VALUE_STYLE_NONE,		(void *) &_length,			(void *) onLengthChanged, 	{ .float_range	= {DEFAULT_LENGTH, 			0, 2540}},		disabled_busy },
 	{ID_HOLES,		    VALUE_TYPE_FLOAT,	VALUE_STORE_PREF,		VALUE_STYLE_NONE,		(void *) &_holes,			(void *) onHolesChanged,	{ .float_range	= {DEFAULT_HOLES, 			0, 1000}},		disabled_busy },
 	{ID_END2,		    VALUE_TYPE_FLOAT,	VALUE_STORE_PREF,		VALUE_STYLE_NONE,		(void *) &_end2,			NULL,						{ .float_range	= {DEFAULT_END_LENGTH, 		0, 100}},		disabled_busy },
-	{ID_QTY,		    VALUE_TYPE_INT,		VALUE_STORE_PREF,		VALUE_STYLE_NONE,		(void *) &_qty,				NULL,						{ .int_range	= {1, 						0, 9999}},		disabled_busy },
+	{ID_QTY,		    VALUE_TYPE_INT,		VALUE_STORE_TOPIC,		VALUE_STYLE_NONE,		(void *) &_qty,				NULL,						{ .int_range	= {1, 						0, 9999}},		disabled_busy },
 	{ID_UNLOAD_LEN,    	VALUE_TYPE_FLOAT,	VALUE_STORE_PREF,		VALUE_STYLE_NONE,		(void *) &_unload_len,		NULL,						{ .float_range	= {DEFAULT_UNLOAD_LEN, 		0, 1000}},		disabled_busy },
 	{ID_LOAD_LEN,	    VALUE_TYPE_FLOAT,	VALUE_STORE_PREF,		VALUE_STYLE_NONE,		(void *) &_load_len,		NULL,						{ .float_range	= {DEFAULT_LOAD_LEN, 		0, 1000}},		disabled_busy },
 	{ID_LOAD_DIST,	    VALUE_TYPE_FLOAT,	VALUE_STORE_PREF,		VALUE_STYLE_NONE,		(void *) &_load_dist,		NULL,						{ .float_range	= {DEFAULT_LOAD_DIST, 		0, 100}},		disabled_busy },
+	{ID_MOVE_DIST,	    VALUE_TYPE_FLOAT,	VALUE_STORE_TOPIC,		VALUE_STYLE_NONE,		(void *) &_move_dist,		NULL,						{ .float_range	= {DEFAULT_MOVE_DIST, 		-1000, 1000}},	disabled_busy },
 	{ID_PULL_MAX,		VALUE_TYPE_FLOAT,	VALUE_STORE_PREF,		VALUE_STYLE_NONE,		(void *) &_pull_max,		NULL,						{ .float_range	= {DEFAULT_PULL_MAX, 		0, 1000}},		disabled_busy },
 	{ID_PULL_EXTRA,		VALUE_TYPE_FLOAT,	VALUE_STORE_PREF,		VALUE_STYLE_NONE,		(void *) &_pull_extra,		NULL,						{ .float_range	= {DEFAULT_PULL_EXTRA, 		0, 10}},		disabled_busy },
 	{ID_PULL_COMPENSATE,VALUE_TYPE_FLOAT,	VALUE_STORE_PREF,		VALUE_STYLE_NONE,		(void *) &_pull_compensate,	NULL,						{ .float_range	= {DEFAULT_PULL_COMPENSATE, 0, 10}},		disabled_busy },
@@ -215,6 +220,7 @@ int		wireStripper::_qty;
 float	wireStripper::_unload_len;
 float	wireStripper::_load_len;
 float	wireStripper::_load_dist;
+float	wireStripper::_move_dist;
 float 	wireStripper::_pull_max;
 float 	wireStripper::_pull_extra;
 float 	wireStripper::_pull_compensate;
@@ -261,6 +267,7 @@ volatile bool have_wire = 0;
 
 volatile bool in_length_change = 0;
 volatile int pending_cut = -1;
+volatile float pending_move = 0.00;
 
 
 
@@ -427,6 +434,14 @@ void wireStripper::docut()
 	}
 }
 
+void wireStripper::domove()
+{
+	if (!any_state)
+	{
+		LOGD("domove(%0.03f,%d)",_move_dist,_ext_speed);
+		extruder.move(_move_dist,_ext_speed);
+	}
+}
 
 
 void wireStripper::onLengthChanged(const myIOTValue *value, float val)

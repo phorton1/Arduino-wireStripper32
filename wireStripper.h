@@ -23,6 +23,7 @@
 #define ID_UNLOAD      		"UNLOAD"
 #define ID_GO				"GO"
 #define ID_CUT				"CUT"
+#define ID_MOVE				"MOVE"
 
 
 #define ID_END1				"END1"
@@ -33,6 +34,7 @@
 #define ID_UNLOAD_LEN		"UNLOAD_LEN"
 #define ID_LOAD_LEN			"LOAD_LEN"
 #define ID_LOAD_DIST		"LOAD_DIST"
+#define ID_MOVE_DIST		"MOVE_DIST"
 #define ID_PULL_MAX			"PULL_MAX"
 #define ID_PULL_EXTRA		"PULL_EXTRA"
 #define ID_PULL_COMPENSATE	"PULL_COMPENSATE"
@@ -98,6 +100,7 @@ public:
     static void unload();
 	static void execute();	  // go()
 	static void docut();
+	static void domove();
 
     static const valDescriptor m_wire_stripper_values[];
     static wireStripperState_t m_publish_state;
@@ -113,6 +116,7 @@ public:
 	static float	_unload_len;
 	static float	_load_len;
 	static float	_load_dist;
+	static float	_move_dist;
 	static float 	_pull_max;
 	static float 	_pull_extra;
 	static float 	_pull_compensate;
