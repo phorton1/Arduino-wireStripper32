@@ -3,10 +3,11 @@
 **[Home](readme.md)** --
 **Design** --
 **[Electronics](electronics.md)** --
-**[Firmware](firmware.md)** --
 **[Build](build.md)** --
+**[Firmware](firmware.md)** --
 
-![anim_build.gif](images/anim_build.gif)
+
+![design_anim1](images/design_anim1.gif)
 
 
 **Next:** A look at the [**Electronics**](electronics.md) for the machine ...

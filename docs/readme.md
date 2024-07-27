@@ -3,14 +3,14 @@
 **Home** --
 **[Design](design.md)** --
 **[Electronics](electronics.md)** --
-**[Firmware](firmware.md)** --
 **[Build](build.md)** --
+**[Firmware](firmware.md)** --
 
 I wanted to build a wire stripper to cut 22 guage solid core breadboard wire.
 After a review of existing projects on YouTube and the web, I decided to
 design my own.
 
-![side_by_side.jpg](images/side_by_side.jpg)
+![main_side_by_side.jpg](images/main_side_by_side.jpg)
 
 - **Compact** - This design is very compact.  The wire cutter does not take
   up a lot of room on my desk or work surface.
@@ -19,17 +19,12 @@ design my own.
   capabilities to provide a *Web User Interface* that can be accessed from
   a cell phone or any other device with a browser on the LAN
 - **Infrared Wire Sensor** - allows for easy **Loading** and **Unloading** of wire.
-- **Single Button** - in addition to the *On/Off switch* there is a single
-  button that can **stop** the machine and **unload or load** the wire.
+- **Single Button** - in addition to the *Web UI* there is a single
+  button that can **Stop** the machine and **Unload or Load** the wire.
 - **Common Tool** - the machine uses a commonly available inexpensive
   manual wire cutter.
-
-
-
-
-I have not yet designed a wire spool holder.  I am considering creating
-a machine that will let me choose the color of the wire I wish to cut
-as an add-on to this initial design.
+- **Standard 12V Power Supply** - the machine uses a commonly available
+  standard 2.5A 12V power supply and has an **On/Off** switch.
 
 
 ## Documentation Outline
@@ -41,8 +36,9 @@ a **maker** who is *building* this wire cutter/stripper:
 
 - **[Design](design.md)** - An overview of the **requirements** and **design** of the machine
 - **[Electronics](electronics.md)** - **Schematics**, **PCB layouts**, and **Cabling** details
-- **[Firmware](firmware.md)** - Compiling and installing the **Firmware**
-- **[Build](build.md)** - **Final Build** of the wireStripper
+- **[Build](build.md)** - **Building* the wireStripper
+- **[Firmware](firmware.md)** - Compiling and installing the **Firmware** to the ESP32
+
 
 
 
@@ -64,11 +60,13 @@ to **mill, epoxy coat, drill, and cut out** the PCBs (printed circuit boards).
 
 The following sub-folders and their children can be found within this 'docs' folder
 
-- [**fusion**](https://github.com/phorton1/Arduino-theClock3/tree/master/docs/fusion) -
+- [**fusion**](https://github.com/phorton1/Arduino-wireStripper32/tree/master/docs/fusion) -
    contains the main *Fusion 360* design **wireStripper32.f3z**, as well as a few
    other files that support the design.
-- [**kicad/\***](https://github.com/phorton1/Arduino-theClock3/tree/master/docs/kicad/) -
+- [**kicad**](https://github.com/phorton1/Arduino-wireStripper32/tree/master/docs/kicad) -
   contains the **kiCAD** project, electronics schematics, and PCB design files
+- [**prusa**](https://github.com/phorton1/Arduino-wireStripper32/tree/master/docs/kicad) -
+  contains *project* and *gcode* for printing the 3D plastic parts on a **Prusa MK3s** printer.
 
 
 ## Credits

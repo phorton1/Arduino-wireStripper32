@@ -103,7 +103,6 @@ public:
 	static void domove();
 
     static const valDescriptor m_wire_stripper_values[];
-    static wireStripperState_t m_publish_state;
 
     // values
 

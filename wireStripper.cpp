@@ -175,7 +175,7 @@ const valDescriptor wireStripper::m_wire_stripper_values[] =
 	{ID_LENGTH,	    	VALUE_TYPE_FLOAT,	VALUE_STORE_PREF,		VALUE_STYLE_NONE,		(void *) &_length,			(void *) onLengthChanged, 	{ .float_range	= {DEFAULT_LENGTH, 			0, 2540}},		disabled_busy },
 	{ID_HOLES,		    VALUE_TYPE_FLOAT,	VALUE_STORE_PREF,		VALUE_STYLE_NONE,		(void *) &_holes,			(void *) onHolesChanged,	{ .float_range	= {DEFAULT_HOLES, 			0, 1000}},		disabled_busy },
 	{ID_END2,		    VALUE_TYPE_FLOAT,	VALUE_STORE_PREF,		VALUE_STYLE_NONE,		(void *) &_end2,			NULL,						{ .float_range	= {DEFAULT_END_LENGTH, 		0, 100}},		disabled_busy },
-	{ID_QTY,		    VALUE_TYPE_INT,		VALUE_STORE_TOPIC,		VALUE_STYLE_NONE,		(void *) &_qty,				NULL,						{ .int_range	= {1, 						0, 9999}},		disabled_busy },
+	{ID_QTY,		    VALUE_TYPE_INT,		VALUE_STORE_TOPIC,		VALUE_STYLE_NONE,		(void *) &_qty,				NULL,						{ .int_range	= {1, 						1, 9999}},		disabled_busy },
 	{ID_UNLOAD_LEN,    	VALUE_TYPE_FLOAT,	VALUE_STORE_PREF,		VALUE_STYLE_NONE,		(void *) &_unload_len,		NULL,						{ .float_range	= {DEFAULT_UNLOAD_LEN, 		0, 1000}},		disabled_busy },
 	{ID_LOAD_LEN,	    VALUE_TYPE_FLOAT,	VALUE_STORE_PREF,		VALUE_STYLE_NONE,		(void *) &_load_len,		NULL,						{ .float_range	= {DEFAULT_LOAD_LEN, 		0, 1000}},		disabled_busy },
 	{ID_LOAD_DIST,	    VALUE_TYPE_FLOAT,	VALUE_STORE_PREF,		VALUE_STYLE_NONE,		(void *) &_load_dist,		NULL,						{ .float_range	= {DEFAULT_LOAD_DIST, 		0, 100}},		disabled_busy },
@@ -654,7 +654,7 @@ void wireStripper::stateMachine()
 	extruder_busy = extruder.busy();
 	any_state = state || cutter_busy || extruder_busy;
 
-	// theck the wire sensor
+	// check the wire sensor
 
 	static uint32_t wire_check_time = 0;
 	if (now > wire_check_time)
@@ -754,7 +754,7 @@ void wireStripper::loop()
 		MY_LED_GREEN;
 	setPixel(color);
 
-	// update the UI when any_stateit changes
+	// update the UI when any_state changes
 	// or the status message changes
 
 	static uint32_t ui_time = 0;

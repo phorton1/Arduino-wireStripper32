@@ -1,12 +1,14 @@
-# wireStripper32 - Final Build
+# wireStripper32 - Building the wireStripper
 
 **[Home](readme.md)** --
 **[Design](design.md)** --
 **[Electronics](electronics.md)** --
-**[Firmware](firmware.md)** --
 **Build** --
+**[Firmware](firmware.md)** --
 
-![combined.jpg](images/combined.jpg)
+![build_combined.jpg](images/build_combined.jpg)
 
 
-**Done!!** Back to the [**beginning**](readme.md) ...
+**Next:** Installing the **[Firmware](firmware.md)** and testing the PCB ...
+
+
