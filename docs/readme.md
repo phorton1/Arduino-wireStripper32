@@ -61,12 +61,33 @@ to **mill, epoxy coat, drill, and cut out** the PCBs (printed circuit boards).
 The following sub-folders and their children can be found within this 'docs' folder
 
 - [**fusion**](https://github.com/phorton1/Arduino-wireStripper32/tree/master/docs/fusion) -
-   contains the main *Fusion 360* design **wireStripper32.f3z**, as well as a few
-   other files that support the design.
+   contains the final output *STL* files and *Fusion 360* design that produces them.
 - [**kicad**](https://github.com/phorton1/Arduino-wireStripper32/tree/master/docs/kicad) -
   contains the **kiCAD** project, electronics schematics, and PCB design files
 - [**prusa**](https://github.com/phorton1/Arduino-wireStripper32/tree/master/docs/kicad) -
-  contains *project* and *gcode* for printing the 3D plastic parts on a **Prusa MK3s** printer.
+  contains *projects* and *gcode* for printing the 3D plastic parts on a **Prusa MK3s** printer.
+
+
+## Please Also See
+
+This project directly makes direct use of my
+[**MyIOT**](https://github.com/phorton1/Arduino-libraries-myIOT)
+("my internet of things*) repository, which provides a generalized approach to
+building parameter riven ESP32 devices that include a Web UI, as the
+basis for the software.
+
+Other project that also make user of the *myIOT* repository include the
+[**Bilge Alarm**](https://github.com/phorton1/Arduino-bilgeAlarm)
+that I built for my boat and
+[**Wooden Geared Clock**](https://github.com/phorton1/Arduino-theClock3)
+that uses an electromagnet to drive a pendulum.
+
+The PCBs (printed circuit boards) were **milled** using the
+[**cnc3018**](https://github.com/phorton1/Arduino-esp32_cnc3018) CNC
+machine that I built.
+
+I hope you will take a few minutes to check out some of these other pages too!!
+
 
 
 ## Credits
@@ -99,27 +120,6 @@ MERCHANTABILITY or FITNESS FOR ANY PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 Please see [LICENSE.TXT](../LICENSE.TXT) for more information.
-
-
-## Please Also See
-
-This project directly makes direct use of my
-[**MyIOT**](https://github.com/phorton1/Arduino-libraries-myIOT)
-("my internet of things*) repository, which provides a generalized approach to
-building parameter riven ESP32 devices that include a Web UI, as the
-basis for the software.
-
-Other project that also make user of the *myIOT* repository include the
-[**Bilge Alarm**](https://github.com/phorton1/Arduino-bilgeAlarm)
-that I built for my boat and
-[**Wooden Geared Clock**](https://github.com/phorton1/Arduino-theClock3)
-that uses an electromagnet to drive a pendulum.
-
-The PCBs (printed circuit boards) were **milled** using the
-[**cnc3018**](https://github.com/phorton1/Arduino-esp32_cnc3018) CNC
-machine that I built.
-
-I hope you will take a few minutes to check out some of these other pages too!!
 
 
 
