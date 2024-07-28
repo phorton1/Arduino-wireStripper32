@@ -73,8 +73,7 @@ The following sub-folders and their children can be found within this 'docs' fol
 This project directly makes direct use of my
 [**MyIOT**](https://github.com/phorton1/Arduino-libraries-myIOT)
 ("my internet of things*) repository, which provides a generalized approach to
-building parameter riven ESP32 devices that include a Web UI, as the
-basis for the software.
+building relatively simple parameter driven ESP32 devices that include a Web UI.
 
 Other project that also make user of the *myIOT* repository include the
 [**Bilge Alarm**](https://github.com/phorton1/Arduino-bilgeAlarm)
