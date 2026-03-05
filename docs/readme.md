@@ -75,12 +75,6 @@ This project directly makes direct use of my
 ("my internet of things*) repository, which provides a generalized approach to
 building relatively simple parameter driven ESP32 devices that include a Web UI.
 
-Other project that also make user of the *myIOT* repository include the
-[**Bilge Alarm**](https://github.com/phorton1/Arduino-bilgeAlarm)
-that I built for my boat and
-[**Wooden Geared Clock**](https://github.com/phorton1/Arduino-theClock3)
-that uses an electromagnet to drive a pendulum.
-
 The PCBs (printed circuit boards) were **milled** using the
 [**cnc3018**](https://github.com/phorton1/Arduino-esp32_cnc3018) CNC
 machine that I built.
